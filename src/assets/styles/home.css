@@ -47,7 +47,7 @@ h5 {
 	position: absolute;
 	top: 0;
 	width: auto;
-	background-image: url('./default.jpg');
+	background-image: url('../images/default.jpg');
 }
 .cover {
 	position: fixed;

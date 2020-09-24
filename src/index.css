@@ -9,3 +9,9 @@ html {
 	color: #333333;
 	background-color: #ffffff;
 }
+a,
+a:hover {
+	text-decoration: none;
+	text-transform: none;
+	color: inherit;
+}
