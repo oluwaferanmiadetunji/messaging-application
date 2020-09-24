@@ -7,6 +7,7 @@ import {faEye} from '@fortawesome/free-solid-svg-icons';
 import {Formloader} from '../loader';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import {makePostReq} from '../api';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 
@@ -36,7 +37,7 @@ const Register = () => {
 		<div className='main'>
 			<div className='cover black'></div>
 			<div className='container'>
-				<Link exact to={HOME}>
+				<Link to={HOME}>
 					<h1 className='logo'>Mensaje</h1>
 				</Link>
 				<div className='content'>
@@ -76,10 +77,10 @@ const Register = () => {
 							<Button type='submit' className='btn' disabled={!!loading}>
 								{loading ? <Formloader /> : 'Sign In'}
 							</Button>
-							<Link exact to={REGISTER}>
+							<Link to={REGISTER}>
 								<p className='text-right'>Don't have an account?</p>
 							</Link>
-							<Link exact to={FORGOT_PASSWORD}>
+							<Link to={FORGOT_PASSWORD}>
 								<p className='text-right'>Forgot password?</p>
 							</Link>
 						</Form>

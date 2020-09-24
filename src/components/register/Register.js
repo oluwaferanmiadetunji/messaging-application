@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 import React, {useState} from 'react';
 import '../../assets/styles/auth.css';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {FORGOT_PASSWORD, HOME, LOGIN} from '../routes/constants';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye} from '@fortawesome/free-solid-svg-icons';
@@ -9,11 +9,14 @@ import {Formloader} from '../loader';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import {makePostReq} from '../api';
+import {Toast} from '../loader';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 const Register = () => {
+	const history = useHistory();
 	const [name, setName] = useState('');
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
@@ -27,7 +30,9 @@ const Register = () => {
 		setPasswordShown(passwordShown ? false : true);
 	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
+		setError({});
+
 		event.preventDefault();
 		if (name.trim() === '') {
 			setError({name: 'You must enter a name!'});
@@ -47,6 +52,12 @@ const Register = () => {
 			setError({password1: "Passwords don't match!", password2: "Passwords don't match!"});
 		} else {
 			setLoading(true);
+			const {status, message} = await makePostReq('user/register', {name, username, email, password: password1});
+			Toast(status, message);
+			if (status === 'ok') {
+				history.push(LOGIN);
+			}
+			setLoading(false);
 		}
 	};
 
@@ -54,7 +65,7 @@ const Register = () => {
 		<div className='main'>
 			<div className='cover black'></div>
 			<div className='container'>
-				<Link exact to={HOME}>
+				<Link to={HOME}>
 					<h1 className='logo'>Mensaje</h1>
 				</Link>
 				<div className='content'>
@@ -140,10 +151,10 @@ const Register = () => {
 							<Button type='submit' className='btn' disabled={!!loading}>
 								{loading ? <Formloader /> : 'Sign Up'}
 							</Button>
-							<Link exact to={LOGIN}>
+							<Link to={LOGIN}>
 								<p className='text-right'>Already have an account?</p>
 							</Link>
-							<Link exact to={FORGOT_PASSWORD}>
+							<Link to={FORGOT_PASSWORD}>
 								<p className='text-right'>Forgot password?</p>
 							</Link>
 						</Form>

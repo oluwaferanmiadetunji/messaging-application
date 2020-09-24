@@ -5,6 +5,7 @@ import {LOGIN, HOME, REGISTER} from '../routes/constants';
 import {Formloader} from '../loader';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import {makePostReq} from '../api';
 
 const ForgotPassword = () => {
 	const [email, setEmail] = useState('');
@@ -24,7 +25,7 @@ const ForgotPassword = () => {
 		<div className='main'>
 			<div className='cover black'></div>
 			<div className='container'>
-				<Link exact to={HOME}>
+				<Link to={HOME}>
 					<h1 className='logo'>Mensaje</h1>
 				</Link>
 				<div className='content'>
@@ -50,10 +51,10 @@ const ForgotPassword = () => {
 							<Button type='submit' className='btn' disabled={!!loading}>
 								{loading ? <Formloader /> : 'Submit'}
 							</Button>
-							<Link exact to={LOGIN}>
+							<Link to={LOGIN}>
 								<p className='text-right'>Sign In?</p>
 							</Link>
-							<Link exact to={REGISTER}>
+							<Link to={REGISTER}>
 								<p className='text-right'>Don't have an account?</p>
 							</Link>
 						</Form>
