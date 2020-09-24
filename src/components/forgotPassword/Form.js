@@ -6,18 +6,22 @@ import {Formloader} from '../loader';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {makePostReq} from '../api';
+import {Toast} from '../loader';
 
 const ForgotPassword = () => {
 	const [email, setEmail] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState({});
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 		if (email.trim() === '') {
 			setError({email: 'You must enter an email address!'});
 		} else {
 			setLoading(true);
+			const {status, message} = await makePostReq('user/reset-password', {email});
+			Toast(status, message);
+			setLoading(false);
 		}
 	};
 

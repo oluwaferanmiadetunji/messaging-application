@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../../assets/styles/auth.css';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {FORGOT_PASSWORD, HOME, REGISTER} from '../routes/constants';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye} from '@fortawesome/free-solid-svg-icons';
@@ -8,10 +8,12 @@ import {Formloader} from '../loader';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {makePostReq} from '../api';
+import {Toast} from '../loader';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const Register = () => {
+	const history = useHistory();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loading, setLoading] = useState(false);
@@ -22,7 +24,7 @@ const Register = () => {
 		setPasswordShown(passwordShown ? false : true);
 	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 		if (email.trim() === '') {
 			setError({email: 'You must enter an email address!'});
@@ -30,6 +32,12 @@ const Register = () => {
 			setError({password: 'You must enter a password!'});
 		} else {
 			setLoading(true);
+			const {status, message} = await makePostReq('user/reset-password', {email, password});
+			Toast(status, message);
+			if (status === 'ok') {
+				history.push('');
+			}
+			setLoading(false);
 		}
 	};
 
