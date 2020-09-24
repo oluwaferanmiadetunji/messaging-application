@@ -1,32 +1,20 @@
 import React, {useState} from 'react';
 import '../../assets/styles/auth.css';
 import {Link} from 'react-router-dom';
-import {FORGOT_PASSWORD, HOME, REGISTER} from '../routes/constants';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEye} from '@fortawesome/free-solid-svg-icons';
+import {LOGIN, HOME, REGISTER} from '../routes/constants';
 import {Formloader} from '../loader';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const eye = <FontAwesomeIcon icon={faEye} />;
-
-const Register = () => {
+const ForgotPassword = () => {
 	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState({});
-	const [passwordShown, setPasswordShown] = useState(false);
-
-	const togglePasswordVisiblity = () => {
-		setPasswordShown(passwordShown ? false : true);
-	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (email.trim() === '') {
 			setError({email: 'You must enter an email address!'});
-		} else if (password.trim() === '') {
-			setError({password: 'You must enter a password!'});
 		} else {
 			setLoading(true);
 		}
@@ -41,7 +29,7 @@ const Register = () => {
 				</Link>
 				<div className='content'>
 					<div className='subscribe'>
-						<h4>Sign In</h4>
+						<h4>Reset Password</h4>
 
 						<Form noValidate onSubmit={handleSubmit}>
 							<Form.Row>
@@ -57,30 +45,16 @@ const Register = () => {
 									/>
 									<Form.Control.Feedback type='invalid'>{error.email}</Form.Control.Feedback>
 								</Form.Group>
-
-								<Form.Group controlId='validationCustom02'>
-									<Form.Label className='sr-only'>Password</Form.Label>
-									<Form.Control
-										type={passwordShown ? 'text' : 'password'}
-										className='form-control transparent'
-										placeholder='Password...'
-										value={password}
-										onChange={({target}) => setPassword(target.value)}
-										isInvalid={!!error.password}
-									/>
-									<i onClick={togglePasswordVisiblity}>{eye}</i>
-									<Form.Control.Feedback type='invalid'>{error.password}</Form.Control.Feedback>
-								</Form.Group>
 							</Form.Row>
 
 							<Button type='submit' className='btn' disabled={!!loading}>
-								{loading ? <Formloader /> : 'Sign In'}
+								{loading ? <Formloader /> : 'Submit'}
 							</Button>
+							<Link exact to={LOGIN}>
+								<p className='text-right'>Sign In?</p>
+							</Link>
 							<Link exact to={REGISTER}>
 								<p className='text-right'>Don't have an account?</p>
-							</Link>
-							<Link exact to={FORGOT_PASSWORD}>
-								<p className='text-right'>Forgot password?</p>
 							</Link>
 						</Form>
 					</div>
@@ -89,4 +63,4 @@ const Register = () => {
 		</div>
 	);
 };
-export default Register;
+export default ForgotPassword;
