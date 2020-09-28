@@ -60,13 +60,6 @@
 	.btn-simple {
 		font-size: $font-size-medium;
 	}
-
-	&.fixed {
-		width: calc(100% - $sidebar-width);
-		right: 0;
-		left: auto;
-		border-radius: 0;
-	}
 }
 
 .navbar-nav > li > .dropdown-menu {
