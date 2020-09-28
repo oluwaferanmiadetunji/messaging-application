@@ -32,11 +32,11 @@ const Register = () => {
 			setError({password: 'You must enter a password!'});
 		} else {
 			setLoading(true);
-			const {status, message} = await makePostReq('user/reset-password', {email, password});
+			const {status, message} = await makePostReq('user/login', {email, password});
 			Toast(status, message);
-			if (status === 'ok') {
-				history.push('');
-			}
+			// if (status === 'ok') {
+			// 	history.push('');
+			// }
 			setLoading(false);
 		}
 	};

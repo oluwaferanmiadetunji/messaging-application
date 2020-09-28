@@ -7,7 +7,7 @@ const Home = () => {
 		<div className='main'>
 			<div className='cover black'></div>
 			<div className='container'>
-				<Link exact to='/'>
+				<Link to='/'>
 					<h1 className='logo'>Mensaje</h1>
 				</Link>
 				<div className='content'>
@@ -15,10 +15,10 @@ const Home = () => {
 					<div className='subscribe'>
 						<h5 className='info-text'>Get started now.</h5>
 						<div className='buttons'>
-							<Link exact to='/signin'>
+							<Link to='/signin'>
 								<button className='btn'>Sign In</button>
 							</Link>
-							<Link exact to='/signup'>
+							<Link to='/signup'>
 								<button className='btn'>Sign Up</button>
 							</Link>
 						</div>
