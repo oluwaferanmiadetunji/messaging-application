@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../../assets/styles/auth.css';
+import '../../assets/css/auth.css';
 import {Link} from 'react-router-dom';
 import {LOGIN, HOME, REGISTER} from '../routes/constants';
 import {Formloader} from '../loader';

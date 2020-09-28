@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 import React, {useState} from 'react';
-import '../../assets/styles/auth.css';
+import '../../assets/css/auth.css';
 import {Link, useHistory} from 'react-router-dom';
 import {FORGOT_PASSWORD, HOME, LOGIN} from '../routes/constants';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
