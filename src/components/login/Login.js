@@ -12,7 +12,7 @@ import {Toast} from '../loader';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 
-const Register = () => {
+const Login = () => {
 	const history = useHistory();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -32,11 +32,12 @@ const Register = () => {
 			setError({password: 'You must enter a password!'});
 		} else {
 			setLoading(true);
-			const {status, message} = await makePostReq('user/login', {email, password});
+			const {status, message, data} = await makePostReq('user/login', {email, password});
 			Toast(status, message);
-			// if (status === 'ok') {
-			// 	history.push('');
-			// }
+			if (status === 'ok') {
+				localStorage.setItem('AuthToken', data.token);
+				history.push(HOME);
+			}
 			setLoading(false);
 		}
 	};
@@ -98,4 +99,4 @@ const Register = () => {
 		</div>
 	);
 };
-export default Register;
+export default Login;

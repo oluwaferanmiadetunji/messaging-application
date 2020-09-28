@@ -1,8 +1,11 @@
 import axios from 'axios';
 
+const token = localStorage.getItem('AuthToken') ? localStorage.getItem('AuthToken') : '';
+
 const URL = `https://mensaje-app.herokuapp.com/`;
+
 const config = {
-	headers: {Authorization: `Bearer ${'token'}`},
+	headers: {Authorization: `Bearer ${token}`},
 };
 
 export const makePostReq = async (path, data) => {
