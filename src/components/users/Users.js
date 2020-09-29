@@ -21,12 +21,14 @@ const Sidebar = () => {
 			<div className='sidebar-background' style={{backgroundImage: `url(${sidebarImage})`}} />
 			<div className='logo'>
 				<Link to='/'>
-					<a className='simple-text logo-mini'>
+					<a href='/' className='simple-text logo-mini'>
 						<div className='logo-img'>
 							<img src={logo} alt='logo_image' />
 						</div>
 					</a>
-					<a className='simple-text logo-normal'>Mensaje</a>
+					<a href='/' className='simple-text logo-normal'>
+						Mensaje
+					</a>
 				</Link>
 			</div>
 			<div className='sidebar-wrapper'>
