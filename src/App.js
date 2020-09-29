@@ -3,8 +3,9 @@ import Routes from './components/routes';
 import {ToastContainer} from 'react-toastify';
 import {AuthContext} from './components/routes/Auth';
 import jwtDecode from 'jwt-decode';
-import {makeGetReq, URL} from './components/api';
+import {makeGetReq} from './components/api';
 import io from 'socket.io-client';
+import {config} from './constants';
 
 let socket;
 
@@ -32,7 +33,7 @@ function App() {
 	const username = localStorage.username;
 
 	useEffect(() => {
-		socket = io(URL);
+		socket = io(config.API_URL);
 		const getDetails = () => {
 			if (token) {
 				const decodedToken = jwtDecode(token);
