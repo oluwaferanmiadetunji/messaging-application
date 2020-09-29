@@ -20,24 +20,24 @@ const Sidebar = () => {
 		<div id='sidebar' className='sidebar' data-color={'black'} data-image={sidebarImage}>
 			<div className='sidebar-background' style={{backgroundImage: `url(${sidebarImage})`}} />
 			<div className='logo'>
-				<a href='#' className='simple-text logo-mini'>
-					<div className='logo-img'>
-						<img src={logo} alt='logo_image' />
-					</div>
-				</a>
-				<a href='#' className='simple-text logo-normal'>
-					Mensaje
-				</a>
+				<Link to='/'>
+					<a className='simple-text logo-mini'>
+						<div className='logo-img'>
+							<img src={logo} alt='logo_image' />
+						</div>
+					</a>
+					<a className='simple-text logo-normal'>Mensaje</a>
+				</Link>
 			</div>
 			<div className='sidebar-wrapper'>
 				<ul className='nav'>
 					{width <= 991 ? <NavbarLinks /> : null}
-					<Nav justify  variant='tabs' defaultActiveKey='/home'>
+					<Nav justify variant='tabs' defaultActiveKey='/home'>
 						<Nav.Item>
-							<Nav.Link href='/home'>All</Nav.Link>
+							<Nav.Link eventKey='link-1'>All</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link eventKey='link-1'>Recent</Nav.Link>
+							<Nav.Link eventKey='link-2'>Recent</Nav.Link>
 						</Nav.Item>
 					</Nav>
 				</ul>

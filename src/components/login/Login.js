@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../../assets/css/auth.css';
 import {Link, useHistory} from 'react-router-dom';
-import {FORGOT_PASSWORD, HOME, REGISTER} from '../routes/constants';
+import {FORGOT_PASSWORD, HOME, CHATS, REGISTER} from '../routes/constants';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye} from '@fortawesome/free-solid-svg-icons';
 import {Formloader} from '../loader';
@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {makePostReq} from '../api';
 import {Toast} from '../loader';
+import {socket} from '../api/sockets';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 
@@ -35,8 +36,9 @@ const Login = () => {
 			const {status, message, data} = await makePostReq('user/login', {email, password});
 			Toast(status, message);
 			if (status === 'ok') {
-				localStorage.setItem('AuthToken', data.token);
-				history.push(HOME);
+				localStorage.setItem('Token', data.token);
+				history.push(CHATS);
+				// socket.emit('join', {usename: data.userData.username});
 			}
 			setLoading(false);
 		}
