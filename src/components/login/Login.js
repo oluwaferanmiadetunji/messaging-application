@@ -23,8 +23,6 @@ const Login = (props) => {
 
 	const {setAuthTokens, setIsLogged} = useAuth();
 
-	const referer = props.location.state.referer || CHATS;
-
 	const togglePasswordVisiblity = () => {
 		setPasswordShown(passwordShown ? false : true);
 	};
@@ -42,7 +40,7 @@ const Login = (props) => {
 			if (status === 'ok') {
 				setAuthTokens(data.token);
 				setIsLogged(true);
-				history.push(referer);
+				history.push(CHATS);
 			}
 			setLoading(false);
 		}

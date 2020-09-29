@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = localStorage.getItem('AuthToken') ? localStorage.getItem('AuthToken') : '';
+const token = localStorage.getItem('tokens') ? localStorage.getItem('tokens') : '';
 
 export const URL = `https://mensaje-app.herokuapp.com/`;
 
