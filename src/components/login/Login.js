@@ -13,7 +13,7 @@ import {useAuth} from '../routes/Auth';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 
-const Login = (props) => {
+const Login = () => {
 	const history = useHistory();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
