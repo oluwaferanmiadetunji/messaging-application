@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import NavbarLinks from '../navbars/NavbarLinks';
-import Sidebar from '../navbars/Sidebar';
+import NavbarLinks from './NavbarLinks';
+import Sidebar from './Sidebar';
 
 const Layout = ({children}) => {
 	const [sidebarExists, setSidebarExists] = useState(false);
