@@ -21,7 +21,7 @@ const Login = (props) => {
 	const [error, setError] = useState({});
 	const [passwordShown, setPasswordShown] = useState(false);
 
-	const {setAuthTokens} = useAuth();
+	const {setAuthTokens, setIsLogged} = useAuth();
 
 	const referer = props.location.state.referer || CHATS;
 
@@ -41,6 +41,7 @@ const Login = (props) => {
 			Toast(status, message);
 			if (status === 'ok') {
 				setAuthTokens(data.token);
+				setIsLogged(true);
 				history.push(referer);
 			}
 			setLoading(false);

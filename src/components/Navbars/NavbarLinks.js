@@ -4,9 +4,9 @@ import Nav from 'react-bootstrap/Nav';
 // import {useAuth} from '../routes/Auth';
 
 const NavbarLinks = () => {
-	// const { setAuthTokens } = useAuth();
+	// const { setIsLogged } = useAuth();
 	// function logOut() {
-  //   setAuthTokens();
+  //   setIsLogged();
   // }
 	return (
 		<Navbar.Collapse id='responsive-navbar-nav'>

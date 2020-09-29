@@ -6,14 +6,19 @@ import {AuthContext} from './components/routes/Auth';
 function App() {
 	const existingTokens = JSON.parse(localStorage.getItem('tokens'));
 	const [authTokens, setAuthTokens] = useState(existingTokens);
+	const [isLogged, setIsLogged] = useState(false);
 
 	const setTokens = (data) => {
 		localStorage.setItem('tokens', JSON.stringify(data));
 		setAuthTokens(data);
 	};
 
+	const setStatus = (value) => {
+		setIsLogged(value);
+	};
+
 	return (
-		<AuthContext.Provider value={{authTokens, setAuthTokens: setTokens}}>
+		<AuthContext.Provider value={{authTokens, setAuthTokens: setTokens, isLogged, setIsLogged: setStatus}}>
 			<ToastContainer
 				position='top-center'
 				autoClose={5000}

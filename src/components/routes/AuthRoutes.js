@@ -4,9 +4,9 @@ import {useAuth} from './Auth';
 import {HOME} from './constants';
 
 function AuthRoutes({component: Component, ...rest}) {
-	const {authTokens} = useAuth();
+	const {isLogged} = useAuth();
 
-	return <Route {...rest} render={(props) => (authTokens ? <Redirect to={HOME} /> : <Component {...props} />)} />;
+	return <Route {...rest} render={(props) => (isLogged ? <Redirect to={HOME} /> : <Component {...props} />)} />;
 }
 
 export default AuthRoutes;
