@@ -147,7 +147,11 @@ const Register = () => {
 								</Form.Group>
 							</Form.Row>
 
-							<Button type='submit' className='btn' disabled={!!loading}>
+							<Button
+								type='submit'
+								className='btn'
+								disabled={!!loading || !name || !username || !email || !password1 || !password2}
+							>
 								{loading ? <Formloader /> : 'Sign Up'}
 							</Button>
 							<Link to={LOGIN}>

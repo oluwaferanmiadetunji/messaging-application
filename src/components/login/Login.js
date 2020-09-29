@@ -17,7 +17,6 @@ const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState({});
 	const [passwordShown, setPasswordShown] = useState(false);
 
 	const {setAuthTokens, setUserData, setIsLogged} = useAuth();
@@ -28,24 +27,19 @@ const Login = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		if (email.trim() === '') {
-			setError({email: 'You must enter an email address!'});
-		} else if (password.trim() === '') {
-			setError({password: 'You must enter a password!'});
-		} else {
-			setLoading(true);
-			const {status, message, data} = await makePostReq('user/login', {email, password});
-			Toast(status, message);
-			if (status === 'ok') {
-				const token = `Bearer ${data.token}`;
-				setAuthTokens(token);
-				setUserData(data.userData);
-				localStorage.setItem('username', data.userData.username);
-				setIsLogged(true);
-				history.push(CHATS);
-			}
-			setLoading(false);
+
+		setLoading(true);
+		const {status, message, data} = await makePostReq('user/login', {email, password});
+		Toast(status, message);
+		if (status === 'ok') {
+			const token = `Bearer ${data.token}`;
+			setAuthTokens(token);
+			setUserData(data.userData);
+			localStorage.setItem('username', data.userData.username);
+			setIsLogged(true);
+			history.push(CHATS);
 		}
+		setLoading(false);
 	};
 
 	return (
@@ -69,9 +63,7 @@ const Login = () => {
 										placeholder='Email Address...'
 										value={email}
 										onChange={({target}) => setEmail(target.value)}
-										isInvalid={!!error.email}
 									/>
-									<Form.Control.Feedback type='invalid'>{error.email}</Form.Control.Feedback>
 								</Form.Group>
 
 								<Form.Group controlId='validationCustom02'>
@@ -82,14 +74,16 @@ const Login = () => {
 										placeholder='Password...'
 										value={password}
 										onChange={({target}) => setPassword(target.value)}
-										isInvalid={!!error.password}
 									/>
 									<i onClick={togglePasswordVisiblity}>{eye}</i>
-									<Form.Control.Feedback type='invalid'>{error.password}</Form.Control.Feedback>
 								</Form.Group>
 							</Form.Row>
 
-							<Button type='submit' className='btn' disabled={!!loading}>
+							<Button
+								type='submit'
+								className='btn'
+								disabled={!!loading || email.trim() === '' || password.trim() === ''}
+							>
 								{loading ? <Formloader /> : 'Sign In'}
 							</Button>
 							<Link to={REGISTER}>

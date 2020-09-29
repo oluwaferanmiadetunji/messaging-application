@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import logo from 'assets/images/reactlogo.png';
 import sidebarImage from 'assets/images/default.jpg';
 import NavbarLinks from './NavbarLinks';
-import Users from '../chats/Users';
+import Users from '../users';
 
 const Sidebar = () => {
 	const [width, setWidth] = useState(window.innerWidth);
