@@ -3,7 +3,7 @@ import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
 import {Loader} from '../loader';
 import {FORGOT_PASSWORD, HOME, LOGIN, REGISTER, CHATS} from './constants';
 import AuthRoutes from './AuthRoutes';
-import {Consumer} from './AuthContext';
+import PrivateRoutes from './PrivateRoutes';
 
 const Home = lazy(() => import('../home' /* webpackChunkName: "Home Page" */));
 const Login = lazy(() => import('../login' /* webpackChunkName: "Login Page" */));
@@ -13,21 +13,17 @@ const Chats = lazy(() => import('../chats' /* webpackChunkName: "Chats Page" */)
 
 const Routes = () => {
 	return (
-		<Consumer>
-			{(context) => (
-				<Router>
-					<Suspense fallback={<Loader />}>
-						<Switch>
-							<Route exact path={HOME} component={Home} text={context} />
-							<AuthRoutes exact path={LOGIN} component={Login} />
-							<AuthRoutes exact path={REGISTER} component={Register} />
-							<AuthRoutes exact path={FORGOT_PASSWORD} component={ForgotPassword} />
-							<Route exact path={CHATS} component={Chats} />
-						</Switch>
-					</Suspense>
-				</Router>
-			)}
-		</Consumer>
+		<Router>
+			<Suspense fallback={<Loader />}>
+				<Switch>
+					<Route exact path={HOME} component={Home} />
+					<AuthRoutes exact path={LOGIN} component={Login} />
+					<AuthRoutes exact path={REGISTER} component={Register} />
+					<AuthRoutes exact path={FORGOT_PASSWORD} component={ForgotPassword} />
+					<PrivateRoutes exact path={CHATS} component={Chats} />
+				</Switch>
+			</Suspense>
+		</Router>
 	);
 };
 

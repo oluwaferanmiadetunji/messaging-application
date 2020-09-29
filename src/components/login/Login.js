@@ -9,17 +9,21 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {makePostReq} from '../api';
 import {Toast} from '../loader';
-import {socket} from '../api/sockets';
+import {useAuth} from '../routes/Auth';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 
-const Login = () => {
+const Login = (props) => {
 	const history = useHistory();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState({});
 	const [passwordShown, setPasswordShown] = useState(false);
+
+	const {setAuthTokens} = useAuth();
+
+	const referer = props.location.state.referer || CHATS;
 
 	const togglePasswordVisiblity = () => {
 		setPasswordShown(passwordShown ? false : true);
@@ -36,9 +40,8 @@ const Login = () => {
 			const {status, message, data} = await makePostReq('user/login', {email, password});
 			Toast(status, message);
 			if (status === 'ok') {
-				localStorage.setItem('Token', data.token);
-				history.push(CHATS);
-				// socket.emit('join', {usename: data.userData.username});
+				setAuthTokens(data.token);
+				history.push(referer);
 			}
 			setLoading(false);
 		}

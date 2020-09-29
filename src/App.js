@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Routes from './components/routes';
 import {ToastContainer} from 'react-toastify';
-import {Provider} from './components/routes/AuthContext';
+import {AuthContext} from './components/routes/Auth';
 
 function App() {
+	const existingTokens = JSON.parse(localStorage.getItem('tokens'));
+	const [authTokens, setAuthTokens] = useState(existingTokens);
+
+	const setTokens = (data) => {
+		localStorage.setItem('tokens', JSON.stringify(data));
+		setAuthTokens(data);
+	};
+
 	return (
-		<Provider>
+		<AuthContext.Provider value={{authTokens, setAuthTokens: setTokens}}>
 			<ToastContainer
 				position='top-center'
 				autoClose={5000}
@@ -18,7 +26,7 @@ function App() {
 				pauseOnHover
 			/>
 			<Routes />
-		</Provider>
+		</AuthContext.Provider>
 	);
 }
 

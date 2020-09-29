@@ -1,8 +1,13 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+// import {useAuth} from '../routes/Auth';
 
 const NavbarLinks = () => {
+	// const { setAuthTokens } = useAuth();
+	// function logOut() {
+  //   setAuthTokens();
+  // }
 	return (
 		<Navbar.Collapse id='responsive-navbar-nav'>
 			<Nav className='mr-auto' />

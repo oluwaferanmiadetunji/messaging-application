@@ -1,13 +1,12 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
-import {Consumer} from './AuthContext';
+import {useAuth} from './Auth';
+import {HOME} from './constants';
 
-const AuthRoutes = ({component: Component, ...rest}) => (
-	<Consumer>
-		{({isLogged}) => {
-			return <Route {...rest} render={(props) => (isLogged === true ? <Redirect to='/' /> : <Component {...props} />)} />;
-		}}
-	</Consumer>
-);
+function AuthRoutes({component: Component, ...rest}) {
+	const {authTokens} = useAuth();
+
+	return <Route {...rest} render={(props) => (authTokens ? <Redirect to={HOME} /> : <Component {...props} />)} />;
+}
 
 export default AuthRoutes;
