@@ -1,11 +1,11 @@
 import React from 'react';
-import NavigationBar from '../Navbars/Navbar';
-import Users from '../users/Users';
+import NavigationBar from '../navbars/Navbar';
+import Sidebar from '../navbars/Sidebar';
 
 const Admin = () => {
 	return (
 		<div className='wrapper'>
-			<Users />
+			<Sidebar />
 			<div id='main-panel' className='main-panel'>
 				<NavigationBar />
 				<div className='content'>Hoksdhvgevg</div>

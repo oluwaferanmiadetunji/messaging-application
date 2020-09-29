@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import '../../assets/css/auth.css';
 import {Link, useHistory} from 'react-router-dom';
 import {FORGOT_PASSWORD, HOME, CHATS, REGISTER} from '../routes/constants';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
