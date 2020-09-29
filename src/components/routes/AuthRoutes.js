@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {useAuth} from './Auth';
-import {CHATS,PROFILE} from './constants';
+import {PROFILE} from './constants';
 
 function AuthRoutes({component: Component, ...rest}) {
 	const {isLogged} = useAuth();
