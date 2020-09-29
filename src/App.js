@@ -57,6 +57,13 @@ function App() {
 		};
 
 		getDetails();
+
+		return () => {
+			socket.emit('offline', {username});
+			socket.emit('disconnect');
+
+			socket.off();
+		};
 	}, [token, username]);
 
 	return (
