@@ -5,19 +5,24 @@ import {AuthContext} from './components/routes/Auth';
 import jwtDecode from 'jwt-decode';
 
 function App() {
-	const existingTokens = JSON.parse(localStorage.getItem('tokens'));
+	const existingTokens = localStorage.getItem('tokens');
 	const [authTokens, setAuthTokens] = useState(existingTokens);
 	const [isLogged, setIsLogged] = useState(false);
+	const [userData, setUserData] = useState({});
 
 	const token = localStorage.tokens;
 
 	const setTokens = (data) => {
-		localStorage.setItem('tokens', JSON.stringify(data));
+		localStorage.setItem('tokens', data);
 		setAuthTokens(data);
 	};
 
 	const setStatus = (value) => {
 		setIsLogged(value);
+	};
+
+	const setData = (data) => {
+		setUserData(data);
 	};
 
 	useEffect(() => {
@@ -36,7 +41,9 @@ function App() {
 	}, [token]);
 
 	return (
-		<AuthContext.Provider value={{authTokens, setAuthTokens: setTokens, isLogged, setIsLogged: setStatus}}>
+		<AuthContext.Provider
+			value={{authTokens, setAuthTokens: setTokens, isLogged, setIsLogged: setStatus, userData, setUserData: setData}}
+		>
 			<ToastContainer
 				position='top-center'
 				autoClose={5000}

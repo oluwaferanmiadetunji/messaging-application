@@ -5,7 +5,7 @@ const token = localStorage.getItem('tokens') ? localStorage.getItem('tokens') : 
 export const URL = `https://mensaje-app.herokuapp.com/`;
 
 const config = {
-	headers: {Authorization: `Bearer ${token}`},
+	headers: {Authorization: token},
 };
 
 export const makePostReq = async (path, data) => {

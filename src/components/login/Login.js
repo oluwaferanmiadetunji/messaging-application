@@ -21,7 +21,7 @@ const Login = () => {
 	const [error, setError] = useState({});
 	const [passwordShown, setPasswordShown] = useState(false);
 
-	const {setAuthTokens, setIsLogged} = useAuth();
+	const {setAuthTokens,setUserData, setIsLogged} = useAuth();
 
 	const togglePasswordVisiblity = () => {
 		setPasswordShown(passwordShown ? false : true);
@@ -38,7 +38,9 @@ const Login = () => {
 			const {status, message, data} = await makePostReq('user/login', {email, password});
 			Toast(status, message);
 			if (status === 'ok') {
-				setAuthTokens(data.token);
+				const token = `Bearer ${data.token}`;
+				setAuthTokens(token);
+				setUserData(data.userData)
 				setIsLogged(true);
 				history.push(CHATS);
 			}

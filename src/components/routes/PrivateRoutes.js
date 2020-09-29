@@ -5,14 +5,14 @@ import {LOGIN} from './constants';
 import {makeGetReq} from '../api';
 
 function PrivateRoute({component: Component, ...rest}) {
-	const {isLogged} = useAuth();
+	const {isLogged, setUserData} = useAuth();
 
 	makeGetReq('user/profile')
-		.then((data) => {
-			console.log(data);
+		.then(({data}) => {
+			setUserData(data);
 		})
-		.catch((err) => {
-			console.log(err);
+		.catch(() => {
+			setUserData({});
 		});
 	return (
 		<Route
