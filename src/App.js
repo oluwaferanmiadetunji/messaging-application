@@ -3,6 +3,10 @@ import Routes from './components/routes';
 import {ToastContainer} from 'react-toastify';
 import {AuthContext} from './components/routes/Auth';
 import jwtDecode from 'jwt-decode';
+import {makeGetReq, URL} from './components/api';
+import io from 'socket.io-client';
+
+let socket;
 
 function App() {
 	const existingTokens = localStorage.getItem('tokens');
@@ -25,20 +29,34 @@ function App() {
 		setUserData(data);
 	};
 
+	const username = localStorage.username;
+
 	useEffect(() => {
+		socket = io(URL);
 		const getDetails = () => {
 			if (token) {
 				const decodedToken = jwtDecode(token);
 				if (decodedToken.exp * 1000 < Date.now()) {
 					setStatus(false);
+					socket.emit('offline', {username});
 				} else {
 					setStatus(true);
+					makeGetReq('user/profile')
+						.then(({data}) => {
+							setUserData(data);
+							socket.emit('online', {username});
+						})
+						.catch(() => {
+							setUserData({});
+						});
 				}
+			} else {
+				socket.emit('offline', {username});
 			}
 		};
 
 		getDetails();
-	}, [token]);
+	}, [token, username]);
 
 	return (
 		<AuthContext.Provider

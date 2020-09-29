@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const token = localStorage.getItem('tokens') ? localStorage.getItem('tokens') : '';
 
-export const URL = `https://mensaje-app.herokuapp.com/`;
+// export const URL = `https://mensaje-app.herokuapp.com/`;
+export const URL = `http://localhost:5000/`;
 
 const config = {
 	headers: {Authorization: token},

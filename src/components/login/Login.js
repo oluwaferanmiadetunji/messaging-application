@@ -21,7 +21,7 @@ const Login = () => {
 	const [error, setError] = useState({});
 	const [passwordShown, setPasswordShown] = useState(false);
 
-	const {setAuthTokens,setUserData, setIsLogged} = useAuth();
+	const {setAuthTokens, setUserData, setIsLogged} = useAuth();
 
 	const togglePasswordVisiblity = () => {
 		setPasswordShown(passwordShown ? false : true);
@@ -40,7 +40,8 @@ const Login = () => {
 			if (status === 'ok') {
 				const token = `Bearer ${data.token}`;
 				setAuthTokens(token);
-				setUserData(data.userData)
+				setUserData(data.userData);
+				localStorage.setItem('username', data.userData.username);
 				setIsLogged(true);
 				history.push(CHATS);
 			}

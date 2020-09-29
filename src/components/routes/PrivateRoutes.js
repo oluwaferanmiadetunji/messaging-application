@@ -2,18 +2,10 @@ import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {useAuth} from './Auth';
 import {LOGIN} from './constants';
-import {makeGetReq} from '../api';
 
 function PrivateRoute({component: Component, ...rest}) {
-	const {isLogged, setUserData} = useAuth();
+	const {isLogged} = useAuth();
 
-	makeGetReq('user/profile')
-		.then(({data}) => {
-			setUserData(data);
-		})
-		.catch(() => {
-			setUserData({});
-		});
 	return (
 		<Route
 			{...rest}
