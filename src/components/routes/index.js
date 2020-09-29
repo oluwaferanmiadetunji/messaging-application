@@ -22,7 +22,7 @@ const Routes = () => {
 					<AuthRoutes exact path={REGISTER} component={Register} />
 					<AuthRoutes exact path={FORGOT_PASSWORD} component={ForgotPassword} />
 					<PrivateRoutes exact path={CHATS} component={Chats} />
-					<Route exact path={PROFILE} component={Profile} />
+					<PrivateRoutes exact path={PROFILE} component={Profile} />
 				</Switch>
 			</Suspense>
 		</Router>

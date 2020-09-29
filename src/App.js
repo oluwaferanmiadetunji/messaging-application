@@ -22,12 +22,18 @@ function App() {
 		setAuthTokens(data);
 	};
 
-	const setStatus = (value) => {
-		setIsLogged(value);
+	const setLogin = () => {
+		setIsLogged(true);
 	};
 
 	const setData = (data) => {
 		setUserData(data);
+	};
+
+	const setLogout = () => {
+		localStorage.removeItem('tokens');
+		setIsLogged(false);
+		setUserData({});
 	};
 
 	const username = localStorage.username;
@@ -38,10 +44,10 @@ function App() {
 			if (token) {
 				const decodedToken = jwtDecode(token);
 				if (decodedToken.exp * 1000 < Date.now()) {
-					setStatus(false);
+					setLogin(false);
 					socket.emit('offline', {username});
 				} else {
-					setStatus(true);
+					setLogin(true);
 					makeGetReq('user/profile')
 						.then(({data}) => {
 							setUserData(data);
@@ -68,7 +74,15 @@ function App() {
 
 	return (
 		<AuthContext.Provider
-			value={{authTokens, setAuthTokens: setTokens, isLogged, setIsLogged: setStatus, userData, setUserData: setData}}
+			value={{
+				authTokens,
+				setAuthTokens: setTokens,
+				isLogged,
+				setIsLogged: setLogin,
+				userData,
+				setUserData: setData,
+				setLogout,
+			}}
 		>
 			<ToastContainer
 				position='top-center'

@@ -19,7 +19,7 @@ const Login = () => {
 	const [loading, setLoading] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);
 
-	const {setAuthTokens, setUserData, setIsLogged} = useAuth();
+	const {setAuthTokens, setUserData, setLogin} = useAuth();
 
 	const togglePasswordVisiblity = () => {
 		setPasswordShown(passwordShown ? false : true);
@@ -36,7 +36,7 @@ const Login = () => {
 			setAuthTokens(token);
 			setUserData(data.userData);
 			localStorage.setItem('username', data.userData.username);
-			setIsLogged(true);
+			setLogin();
 			history.push(CHATS);
 		}
 		setLoading(false);
