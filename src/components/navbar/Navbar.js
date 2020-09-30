@@ -1,24 +1,36 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Form from 'react-bootstrap/Form';
+import NotificationSVG from './NotificationSVG';
+import MessageSVG from './MessageSVG';
+import Badge from 'react-bootstrap/Badge';
+import {PROFILE} from '../routes/constants';
+
+const img = 'https://firebasestorage.googleapis.com/v0/b/mensaje-4ce96.appspot.com/o/user.jpg?alt=media';
 
 const Navigationbar = () => {
 	return (
-		<Navbar expand='lg'>
-			<Navbar.Brand href='#home'>React-Bootstrap</Navbar.Brand>
+		<Navbar expand='lg' className='nav-bar justify-content-between'>
+			<Navbar.Brand href='#home'>Mensaje</Navbar.Brand>
 			<Navbar.Toggle aria-controls='basic-navbar-nav' />
 			<Navbar.Collapse id='basic-navbar-nav'>
-				<Nav className='mr-auto'>
-					<Nav.Link href='#home'>Home</Nav.Link>
-					<Nav.Link href='#link'>Link</Nav.Link>
-					<NavDropdown title='Dropdown' id='basic-nav-dropdown'>
-						<NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
-						<NavDropdown.Item href='#action/3.2'>Another action</NavDropdown.Item>
-						<NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
-						<NavDropdown.Divider />
-						<NavDropdown.Item href='#action/3.4'>Separated link</NavDropdown.Item>
-					</NavDropdown>
+				<Form />
+				<Nav>
+					<div className='icons'>
+						<div>
+							<MessageSVG />
+							<Badge>9</Badge>
+						</div>
+						<div>
+							<NotificationSVG />
+							<Badge>9</Badge>
+						</div>
+						<Link to={PROFILE}>
+							<img src={img} alt='profile' />
+						</Link>
+					</div>
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>
