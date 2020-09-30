@@ -4,13 +4,12 @@
 	.chats-div {
 		padding-top: 20px;
 		background: url('../img/bg.jpg');
-		height: 100%;
 		padding-right: 20px;
+		width:100%;
 	}
 }
 
 .chat-lists {
-	height: 100%;
 	padding: 0 20px 0 30px;
 	background-color: $dark-light;
 	form {
@@ -44,7 +43,7 @@
 	}
 }
 .users-list {
-	height: 70vh;
+	height: 586px;
 	overflow: auto;
 	img {
 		height: 50px;

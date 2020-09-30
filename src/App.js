@@ -44,10 +44,10 @@ function App() {
 			if (token) {
 				const decodedToken = jwtDecode(token);
 				if (decodedToken.exp * 1000 < Date.now()) {
-					setLogin(false);
+					setLogout();
 					socket.emit('offline', {username});
 				} else {
-					setLogin(true);
+					setLogin();
 					makeGetReq('user/profile')
 						.then(({data}) => {
 							setUserData(data);

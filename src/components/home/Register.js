@@ -12,6 +12,7 @@ import {CHATS} from '../routes/constants';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+const letters = /^[A-Za-z]+$/;
 
 const Register = () => {
 	const history = useHistory();
@@ -32,6 +33,8 @@ const Register = () => {
 		event.preventDefault();
 		if (username.trim().length < 3) {
 			Toast('error', 'Username must be greater than 2 characters!');
+		} else if (!username.match(letters)) {
+			Toast('error', 'Username can contain only letters!');
 		} else if (!email.match(re)) {
 			Toast('error', 'You must enter a valid email!');
 		} else if (password1.trim().length < 7) {
