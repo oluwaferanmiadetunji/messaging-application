@@ -1,19 +1,8 @@
 import React from 'react';
-import NavigationBar from '../navbar';
-import Lists from './List';
-import Conversation from './Conversation';
-import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Chats = () => {
-	return (
-		<div className='chat-container'>
-			<NavigationBar />
-			<Row>
-				<Lists />
-				<Conversation />
-			</Row>
-		</div>
-	);
+	return <Col sm={9} className='chats-div'></Col>;
 };
 
 export default Chats;

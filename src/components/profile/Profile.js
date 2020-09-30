@@ -1,11 +1,8 @@
-import React from 'react'
+import React from 'react';
+import Col from 'react-bootstrap/Col';
 
 const Profile = () => {
-  return (
-    <div>
-      profile
-    </div>
-  )
-}
+	return <Col sm={9} className='profile-div'></Col>;
+};
 
-export default Profile
+export default Profile;
