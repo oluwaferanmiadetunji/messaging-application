@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye} from '@fortawesome/free-solid-svg-icons';
 import Formloader from '../utils/Formloader';
 import Button from 'react-bootstrap/Button';
-import {makePostReq} from '../api';
+import {makePostReq} from '../api/Api';
 import Toast from '../utils/Toast';
 import {useAuth} from '../routes/Auth';
 import {CHATS} from '../routes/constants';

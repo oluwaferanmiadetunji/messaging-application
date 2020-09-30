@@ -5,7 +5,7 @@ import {AuthContext} from './components/routes/Auth';
 import jwtDecode from 'jwt-decode';
 import io from 'socket.io-client';
 import {config} from './constants';
-import {makeGetReq} from './components/api';
+import {makeGetReq} from './components/api/Api';
 
 let socket;
 

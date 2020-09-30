@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Formloader from '../utils/Formloader';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {makePostReq} from '../api';
+import {makePostReq} from '../api/Api';
 import Toast from '../utils/Toast';
 
 const ForgotPassword = () => {
