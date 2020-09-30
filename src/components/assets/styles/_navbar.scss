@@ -1,8 +1,18 @@
 .nav-bar {
-	background-color: $main;
-	border-bottom: 1px solid $secondary-light;
+	background-color: $dark;
 	padding: 10px 20px;
 	justify-content: space-between;
+	.app-header {
+		margin-left: 10%;
+		a {
+			color: $light;
+			text-decoration: none;
+			text-transform: uppercase;
+			&:hover {
+				color: $main;
+			}
+		}
+	}
 	.nav-links {
 		text-align: right;
 	}
@@ -14,12 +24,12 @@
 			margin: 10px;
 			svg {
 				font-size: 23px;
-				color: $primary;
+				color: $light;
 				cursor: pointer;
 			}
 			span {
-				background: $primary;
-				color: $main;
+				background: $dark;
+				color: $light;
 				border-radius: 50%;
 				height: 20px;
 				width: 20px;
@@ -29,11 +39,12 @@
 		}
 
 		img {
-			height: 30px;
-			width: 30px;
+			height: 35px;
+			width: 35px;
 			border-radius: 50%;
-      margin-top: 5px;
-      margin-left: 20px;
+			margin-top: 5px;
+			margin-left: 20px;
+			border: 1px solid $dark;
 		}
 	}
 }
