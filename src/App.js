@@ -3,9 +3,9 @@ import Routes from './components/routes';
 import {ToastContainer} from 'react-toastify';
 import {AuthContext} from './components/routes/Auth';
 import jwtDecode from 'jwt-decode';
-import {makeGetReq} from './components/api';
 import io from 'socket.io-client';
 import {config} from './constants';
+import {makeGetReq} from './components/api';
 
 let socket;
 
@@ -78,7 +78,7 @@ function App() {
 				authTokens,
 				setAuthTokens: setTokens,
 				isLogged,
-				setIsLogged: setLogin,
+				setLogin,
 				userData,
 				setUserData: setData,
 				setLogout,

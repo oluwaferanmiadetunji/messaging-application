@@ -1,13 +1,3 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Layout from '../layout'
-
-const Chats = () => {
-	return (
-		<Layout>
-			<Container fluid>Chats</Container>
-		</Layout>
-	);
-};
+import Chats from './Chats';
 
 export default Chats;
