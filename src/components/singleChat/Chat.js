@@ -7,7 +7,7 @@ import Input from './Input';
 import Messages from './Messages';
 
 const Chats = () => {
-	const {chats, setNewChats, recipient, currentRoom} = useAppContext();
+	const {chats, setChats, recipient, currentRoom} = useAppContext();
 	const [message, setMessage] = useState('');
 	const username = localStorage.username;
 
@@ -27,9 +27,9 @@ const Chats = () => {
 
 	useEffect(() => {
 		Socket.on('message', (message) => {
-			setNewChats(message);
+			setChats(message);
 		});
-	}, [setNewChats, chats]);
+	}, [setChats, chats]);
 
 	return (
 		<Col sm={9} className='chats-div'>

@@ -39,7 +39,7 @@ function App() {
 	};
 
 	const setRoomChats = (data) => {
-		setChats([...chats, ...data]);
+		setChats([...chats, data]);
 	};
 
 	const setNewChats = (data) => {
