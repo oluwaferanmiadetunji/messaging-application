@@ -12,6 +12,7 @@ function App() {
 	const [userData, setUserData] = useState({});
 	const [allUsers, setAllUsers] = useState([]);
 	const [currentRoom, setCurrentRoom] = useState('');
+	const [chats, setChats] = useState([]);
 
 	const token = localStorage.tokens;
 
@@ -34,6 +35,14 @@ function App() {
 
 	const setRoom = (data) => {
 		setCurrentRoom(data);
+	};
+
+	const setRoomChats = (data) => {
+		setChats([...chats, ...data]);
+	};
+
+	const setNewChats = (data) => {
+		setChats([...chats, data]);
 	};
 
 	const setLogout = () => {
@@ -88,6 +97,9 @@ function App() {
 				setAllUsers: setUsers,
 				currentRoom,
 				setCurrentRoom: setRoom,
+				chats,
+				setChats: setRoomChats,
+				setNewChats,
 			}}
 		>
 			<ToastContainer

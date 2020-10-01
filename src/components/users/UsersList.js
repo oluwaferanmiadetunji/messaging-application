@@ -15,13 +15,15 @@ import CreateChatRoom from '../utils/createChat';
 import Socket from '../api/Sockets';
 
 const Userlist = () => {
-	const {setAllUsers, allUsers, userData, setCurrentRoom} = useAppContext();
+	const {setAllUsers, allUsers, userData, setCurrentRoom, setChats} = useAppContext();
 	dayjs.extend(relativeTime);
 
 	const createRoom = (recipient) => {
 		const room = CreateChatRoom(userData.username, recipient);
 		setCurrentRoom(room);
-		Socket.emit('getChats', room);
+		Socket.emit('getChats', room, ({chats}) => {
+			setChats(chats);
+		});
 	};
 
 	useEffect(() => {
