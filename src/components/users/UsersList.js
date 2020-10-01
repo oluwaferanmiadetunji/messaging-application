@@ -10,17 +10,25 @@ import Nav from 'react-bootstrap/Nav';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Dot from '../utils/Dot';
-import {useAuth} from '../routes/Auth';
+import {useAppContext} from '../utils/Context';
+import CreateChatRoom from '../utils/createChat';
+import Socket from '../api/Sockets';
 
 const Userlist = () => {
-	const {setAllUsers, allUsers} = useAuth();
+	const {setAllUsers, allUsers, userData, setCurrentRoom} = useAppContext();
 	dayjs.extend(relativeTime);
+
+	const createRoom = (recipient) => {
+		const room = CreateChatRoom(userData.username, recipient);
+		setCurrentRoom(room);
+		Socket.emit('getChats', room);
+	};
 
 	useEffect(() => {
 		socket.on('allUsers', (data) => {
 			setAllUsers(data);
 		});
-	}, [allUsers,setAllUsers]);
+	}, [allUsers, setAllUsers]);
 
 	return (
 		<Col sm={3} className='chat-lists'>
@@ -42,7 +50,15 @@ const Userlist = () => {
 			<ListGroup className='users-list'>
 				{allUsers
 					? allUsers.map(({imageUrl, name, online, lastLogin, username}, index) => (
-							<NavLink exact to={`/chats/${username}`} className='list-group-item' key={index}>
+							<NavLink
+								exact
+								to={`/chats/${username}`}
+								className='list-group-item'
+								key={index}
+								onClick={() => {
+									createRoom(username);
+								}}
+							>
 								<div>
 									<img src={imageUrl} alt='profile' />
 								</div>

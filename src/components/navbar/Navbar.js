@@ -8,14 +8,14 @@ import MessageSVG from '../utils/MessageSVG';
 import Badge from 'react-bootstrap/Badge';
 import {PROFILE} from '../routes/constants';
 import {CHATS} from '../routes/constants';
-import {useAuth} from '../routes/Auth';
+import {useAppContext} from '../utils/Context';
 
 const img = 'https://firebasestorage.googleapis.com/v0/b/mensaje-4ce96.appspot.com/o/user.jpg?alt=media';
 
 const Navigationbar = () => {
 	const {
 		userData: {imageUrl},
-	} = useAuth();
+	} = useAppContext();
 	return (
 		<Navbar expand='lg' className='nav-bar justify-content-between'>
 			<Navbar.Brand className='app-header'>

@@ -6,7 +6,7 @@ import Formloader from '../utils/Formloader';
 import Button from 'react-bootstrap/Button';
 import {makePostReq} from '../api/Api';
 import Toast from '../utils/Toast';
-import {useAuth} from '../routes/Auth';
+import {useAppContext} from '../utils/Context';
 import {CHATS} from '../routes/constants';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
@@ -18,7 +18,7 @@ const Login = () => {
 	const [loading, setLoading] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);
 
-	const {setAuthTokens, setUserData, setLogin} = useAuth();
+	const {setAuthTokens, setUserData, setLogin} = useAppContext();
 
 	const togglePasswordVisiblity = () => {
 		setPasswordShown(passwordShown ? false : true);

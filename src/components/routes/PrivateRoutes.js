@@ -1,10 +1,10 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
-import {useAuth} from './Auth';
+import {useAppContext} from '../utils/Context';
 import {HOME} from './constants';
 
 function PrivateRoute({component: Component, ...rest}) {
-	const {isLogged} = useAuth();
+	const {isLogged} = useAppContext();
 
 	return (
 		<Route

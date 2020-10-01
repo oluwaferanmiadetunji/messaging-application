@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Routes from './components/routes';
 import {ToastContainer} from 'react-toastify';
-import {AuthContext} from './components/routes/Auth';
+import {Context} from './components/utils/Context';
 import jwtDecode from 'jwt-decode';
 import socket from './components/api/Sockets';
 
@@ -11,6 +11,7 @@ function App() {
 	const [isLogged, setIsLogged] = useState(false);
 	const [userData, setUserData] = useState({});
 	const [allUsers, setAllUsers] = useState([]);
+	const [currentRoom, setCurrentRoom] = useState('');
 
 	const token = localStorage.tokens;
 
@@ -29,6 +30,10 @@ function App() {
 
 	const setUsers = (data) => {
 		setAllUsers(data);
+	};
+
+	const setRoom = (data) => {
+		setCurrentRoom(data);
 	};
 
 	const setLogout = () => {
@@ -70,7 +75,7 @@ function App() {
 	}, [token, username]);
 
 	return (
-		<AuthContext.Provider
+		<Context.Provider
 			value={{
 				authTokens,
 				setAuthTokens: setTokens,
@@ -81,6 +86,8 @@ function App() {
 				setLogout,
 				allUsers,
 				setAllUsers: setUsers,
+				currentRoom,
+				setCurrentRoom: setRoom,
 			}}
 		>
 			<ToastContainer
@@ -95,7 +102,7 @@ function App() {
 				pauseOnHover
 			/>
 			<Routes />
-		</AuthContext.Provider>
+		</Context.Provider>
 	);
 }
 
