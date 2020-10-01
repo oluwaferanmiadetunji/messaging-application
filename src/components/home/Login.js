@@ -11,7 +11,7 @@ import {CHATS} from '../routes/constants';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 
-const Login = () => {
+const Login = ({setTab}) => {
 	const history = useHistory();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -46,7 +46,6 @@ const Login = () => {
 	return (
 		<form onSubmit={handleSubmit} className='sign-in-form'>
 			<h2 className='title'>Welcome Back</h2>
-			<p>Sign In to continue to your account</p>
 			<div className='input-field'>
 				<input
 					type='email'
@@ -67,6 +66,7 @@ const Login = () => {
 			<Button onClick={invalid ? null : handleSubmit} className={invalid ? 'btn disabled' : 'btn'}>
 				{loading ? <Formloader /> : 'Sign In'}
 			</Button>
+			<p  className='redirect' onClick={() => setTab(1)}>Forgot Password?</p>
 		</form>
 	);
 };

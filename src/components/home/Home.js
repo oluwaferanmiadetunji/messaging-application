@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import Login from './Login';
 import Register from './Register';
 import LoginImage from '../assets/svg/login.svg';
 import RegisterImage from '../assets/svg/register.svg';
-// import ForgotPassword from './ForgotPassword';
+import AuthContainer from './AuthContainer';
 
 const Home = () => {
 	const [initialClass, setInitialClass] = useState('con');
@@ -13,7 +12,7 @@ const Home = () => {
 		<div className={initialClass}>
 			<div className='forms-container'>
 				<div className='signin-signup'>
-					<Login />
+					<AuthContainer />
 					<Register />
 				</div>
 			</div>
@@ -21,13 +20,9 @@ const Home = () => {
 			<div className='panels-container'>
 				<div className='panel left-panel'>
 					<div className='content'>
-						<h3>New here ?</h3>
+						<h3>New here?</h3>
 						<p>Create an account to get connected with friends</p>
-						<button
-							className='btn transparent'
-							id='sign-up-btn'
-							onClick={() => setInitialClass('con sign-up-mode')}
-						>
+						<button className='btn transparent' id='sign-up-btn' onClick={() => setInitialClass('con sign-up-mode')}>
 							Sign up
 						</button>
 					</div>
@@ -35,7 +30,7 @@ const Home = () => {
 				</div>
 				<div className='panel right-panel'>
 					<div className='content'>
-						<h3>One of us ?</h3>
+						<h3>Already have an account?</h3>
 						<p>Happy to have you back.</p>
 						<button className='btn transparent' id='sign-in-btn' onClick={() => setInitialClass('con')}>
 							Sign in
