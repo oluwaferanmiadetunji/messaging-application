@@ -3,7 +3,6 @@ import Routes from './components/routes';
 import {ToastContainer} from 'react-toastify';
 import {AuthContext} from './components/routes/Auth';
 import jwtDecode from 'jwt-decode';
-import {makeGetReq} from './components/api/Api';
 import socket from './components/api/Sockets';
 
 function App() {
@@ -49,17 +48,14 @@ function App() {
 					socket.emit('offline', {username});
 				} else {
 					setLogin();
-					makeGetReq('user/profile')
-						.then(({data}) => {
-							setUserData(data);
-							socket.emit('online', {username});
-						})
-						.catch(() => {
-							setUserData({});
-						});
+					socket.emit('online', {username});
+					socket.on('profile', (data) => {
+						setUserData(data);
+					});
 				}
 			} else {
 				socket.emit('offline', {username});
+				setUserData({});
 			}
 		};
 
