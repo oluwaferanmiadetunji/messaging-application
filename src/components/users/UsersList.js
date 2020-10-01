@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import socket from '../api/Sockets';
 import {NavLink} from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
@@ -6,10 +7,21 @@ import FormControl from 'react-bootstrap/FormControl';
 import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Nav from 'react-bootstrap/Nav';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import Dot from '../utils/Dot';
+import {useAuth} from '../routes/Auth';
 
 const Userlist = () => {
-  
-const img = 'https://firebasestorage.googleapis.com/v0/b/mensaje-4ce96.appspot.com/o/user.jpg?alt=media';
+	const {setAllUsers, allUsers} = useAuth();
+	dayjs.extend(relativeTime);
+
+	useEffect(() => {
+		socket.on('allUsers', (data) => {
+			setAllUsers(data);
+		});
+	}, [allUsers,setAllUsers]);
+
 	return (
 		<Col sm={3} className='chat-lists'>
 			<Form>
@@ -28,42 +40,22 @@ const img = 'https://firebasestorage.googleapis.com/v0/b/mensaje-4ce96.appspot.c
 			</Nav>
 
 			<ListGroup className='users-list'>
-				<NavLink exact to='/chats' className='list-group-item'>
-					<div>
-						<img src={img} alt='profile' />
-					</div>
-					<div className='user-info'>
-						<p className='name'>
-							Test Test
-							<span>6:20pm</span>
-						</p>
-						<p className='text'>Cras justo odioCras justo odioCras justo odio</p>
-					</div>
-				</NavLink>
-				<NavLink exact to='/' className='list-group-item'>
-					<div>
-						<img src={img} alt='profile' />
-					</div>
-					<div className='user-info'>
-						<p className='name'>
-							Test Test
-							<span>6:20pm</span>
-						</p>
-						<p className='text'>Cras justo odioCras justo odioCras justo odio</p>
-					</div>
-				</NavLink>
-				<NavLink exact to='/' className='list-group-item'>
-					<div>
-						<img src={img} alt='profile' />
-					</div>
-					<div className='user-info'>
-						<p className='name'>
-							Test Test
-							<span>6:20pm</span>
-						</p>
-						<p className='text'>Cras justo odioCras justo odioCras justo odio</p>
-					</div>
-				</NavLink>
+				{allUsers
+					? allUsers.map(({imageUrl, name, online, lastLogin, username}, index) => (
+							<NavLink exact to={`/chats/${username}`} className='list-group-item' key={index}>
+								<div>
+									<img src={imageUrl} alt='profile' />
+								</div>
+								<div className='user-info'>
+									<p className='name'>{name}</p>
+									<span>{dayjs(lastLogin).fromNow()}</span>
+								</div>
+								<div>
+									<Dot currentClass={online ? 'online' : 'offline'} />
+								</div>
+							</NavLink>
+					  ))
+					: null}
 			</ListGroup>
 		</Col>
 	);

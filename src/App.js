@@ -11,6 +11,7 @@ function App() {
 	const [authTokens, setAuthTokens] = useState(existingTokens);
 	const [isLogged, setIsLogged] = useState(false);
 	const [userData, setUserData] = useState({});
+	const [allUsers, setAllUsers] = useState([]);
 
 	const token = localStorage.tokens;
 
@@ -25,6 +26,10 @@ function App() {
 
 	const setData = (data) => {
 		setUserData(data);
+	};
+
+	const setUsers = (data) => {
+		setAllUsers(data);
 	};
 
 	const setLogout = () => {
@@ -78,6 +83,8 @@ function App() {
 				userData,
 				setUserData: setData,
 				setLogout,
+				allUsers,
+				setAllUsers: setUsers,
 			}}
 		>
 			<ToastContainer

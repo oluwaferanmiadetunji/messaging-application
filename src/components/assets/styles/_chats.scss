@@ -5,7 +5,7 @@
 		padding-top: 20px;
 		background: url('../img/bg.jpg');
 		padding-right: 20px;
-		width:100%;
+		width: 100%;
 	}
 }
 
@@ -62,6 +62,15 @@
 		display: flex;
 		padding: 10px;
 		border: none;
+		svg {
+			font-size: 30px;
+		}
+		.bi.bi-dot.online {
+			color: green;
+		}
+		.bi.bi-dot.offline {
+			color: red;
+		}
 		p {
 			margin: 2px;
 		}
@@ -75,7 +84,6 @@
 			span {
 				font-size: 13px;
 				color: $primary;
-				margin-left: 10px;
 				color: $light;
 			}
 			.text {
