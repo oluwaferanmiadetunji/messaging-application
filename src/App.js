@@ -12,6 +12,7 @@ function App() {
 	const [userData, setUserData] = useState({});
 	const [allUsers, setAllUsers] = useState([]);
 	const [currentRoom, setCurrentRoom] = useState('');
+	const [recipient, SetRecipient] = useState('');
 	const [chats, setChats] = useState([]);
 
 	const token = localStorage.tokens;
@@ -49,6 +50,10 @@ function App() {
 		localStorage.removeItem('tokens');
 		setIsLogged(false);
 		setUserData({});
+	};
+
+	const setUser = (data) => {
+		SetRecipient(data);
 	};
 
 	const username = localStorage.username;
@@ -100,6 +105,8 @@ function App() {
 				chats,
 				setChats: setRoomChats,
 				setNewChats,
+				recipient,
+				SetRecipient: setUser,
 			}}
 		>
 			<ToastContainer

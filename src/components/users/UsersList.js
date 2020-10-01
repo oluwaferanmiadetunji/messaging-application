@@ -15,7 +15,7 @@ import CreateChatRoom from '../utils/createChat';
 import Socket from '../api/Sockets';
 
 const Userlist = () => {
-	const {setAllUsers, allUsers, userData, setCurrentRoom, setChats} = useAppContext();
+	const {setAllUsers, allUsers, userData, setCurrentRoom, SetRecipient, setChats} = useAppContext();
 	dayjs.extend(relativeTime);
 
 	const createRoom = (recipient) => {
@@ -58,6 +58,7 @@ const Userlist = () => {
 								className='list-group-item'
 								key={index}
 								onClick={() => {
+									SetRecipient(username);
 									createRoom(username);
 								}}
 							>

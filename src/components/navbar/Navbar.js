@@ -21,7 +21,7 @@ const Navigationbar = () => {
 			<Navbar.Brand className='app-header'>
 				<Link to={CHATS}>Mensaje</Link>
 			</Navbar.Brand>
-			<Navbar.Toggle aria-controls='basic-navbar-nav' />
+			<Navbar.Toggle aria-controls='basic-navbar-nav'>Close</Navbar.Toggle>
 			<Navbar.Collapse id='basic-navbar-nav'>
 				<Form />
 				<Nav>
