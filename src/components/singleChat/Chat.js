@@ -7,7 +7,7 @@ import Input from './Input';
 import Messages from './Messages';
 
 const Chats = () => {
-	const {chats, setNewChats, currentRoom} = useAppContext();
+	const {chats, setNewChats, recipient, currentRoom} = useAppContext();
 	const [message, setMessage] = useState('');
 	const username = localStorage.username;
 
@@ -34,7 +34,7 @@ const Chats = () => {
 	return (
 		<Col sm={9} className='chats-div'>
 			<div className='outer-container'>
-				<InfoBar />
+				<InfoBar recipient={recipient} />
 				<Messages chats={chats} />
 				<Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
 			</div>

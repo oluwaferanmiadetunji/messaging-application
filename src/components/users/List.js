@@ -10,14 +10,14 @@ import CreateChatRoom from '../utils/createChat';
 import Socket from '../api/Sockets';
 
 const List = () => {
-	const {setAllUsers, allUsers, userData, setCurrentRoom, SetRecipient, setChats} = useAppContext();
+	const {setAllUsers, allUsers, userData, setCurrentRoom, SetRecipient, setNewChats} = useAppContext();
 	dayjs.extend(relativeTime);
 
 	const createRoom = (recipient) => {
 		const room = CreateChatRoom(userData.username, recipient);
 		setCurrentRoom(room);
 		Socket.emit('getChats', room, ({chats}) => {
-			setChats(chats);
+			setNewChats(chats);
 		});
 	};
 
@@ -32,11 +32,11 @@ const List = () => {
 				? allUsers.map(({imageUrl, name, online, lastLogin, username}, index) => (
 						<NavLink
 							exact
-							to={`/chats/${username}`}
+							to={`/${username}/chats`}
 							className='list-group-item'
 							key={index}
 							onClick={() => {
-								SetRecipient(username);
+								SetRecipient({imageUrl, name, online, lastLogin, username});
 								createRoom(username);
 							}}
 						>

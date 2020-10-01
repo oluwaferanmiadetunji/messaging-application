@@ -8,30 +8,12 @@
 	height: 80%;
 	width: 100%;
 	margin-right: 20px;
-}
-.infoBar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background: #2979ff;
-	border-radius: 4px 4px 0 0;
-	height: 60px;
-	width: 100%;
+	a {
+		text-transform: none;
+		text-decoration: none;
+	}
 }
 
-.leftInnerContainer {
-	flex: 0.5;
-	display: flex;
-	align-items: center;
-	margin-left: 5%;
-	color: white;
-}
-.rightInnerContainer {
-	display: flex;
-	flex: 0.5;
-	justify-content: flex-end;
-	margin-right: 5%;
-}
 .chatForm {
 	display: flex;
 	border-top: 2px solid #d3d3d3;

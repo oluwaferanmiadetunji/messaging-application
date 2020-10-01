@@ -12,7 +12,7 @@ function App() {
 	const [userData, setUserData] = useState({});
 	const [allUsers, setAllUsers] = useState([]);
 	const [currentRoom, setCurrentRoom] = useState('');
-	const [recipient, SetRecipient] = useState('');
+	const [recipient, SetRecipient] = useState({});
 	const [chats, setChats] = useState([]);
 
 	const token = localStorage.tokens;
@@ -43,7 +43,7 @@ function App() {
 	};
 
 	const setNewChats = (data) => {
-		setChats([...chats, data]);
+		setChats(data);
 	};
 
 	const setLogout = () => {

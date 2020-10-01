@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import {makePostReq} from '../api/Api';
 import Toast from '../utils/Toast';
 import {useAppContext} from '../utils/Context';
-import {CHATS} from '../routes/constants';
+import {RECENT} from '../routes/constants';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 
@@ -37,7 +37,7 @@ const Login = ({setTab}) => {
 			setUserData(data.userData);
 			localStorage.setItem('username', data.userData.username);
 			setLogin();
-			history.push(CHATS);
+			history.push(RECENT);
 		}
 	};
 

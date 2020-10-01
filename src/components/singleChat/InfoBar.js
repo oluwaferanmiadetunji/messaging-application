@@ -1,15 +1,23 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-const InfoBar = () => {
+const InfoBar = ({recipient}) => {
 	return (
-		<div className='infoBar'>
-			<div className='leftInnerContainer'>
-        <h3>Test</h3>
-      </div>
-      <div className='rightInnerContainer'>
-        <h3>Test</h3>
-      </div>
-		</div>
+		<Link to={`/${recipient.username}/profile`}>
+			<div className='infoBar'>
+				<div className='recipientName'>
+					<div>
+						<img src={recipient.imageUrl} alt='profile' />
+					</div>
+					<div>
+						<p>{recipient.name}</p>
+					</div>
+					<div>
+						<p className='status'>{recipient.online ? 'Online' : 'Offline'}</p>
+					</div>
+				</div>
+			</div>
+		</Link>
 	);
 };
 
