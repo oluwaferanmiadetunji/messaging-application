@@ -49,7 +49,6 @@
 .messageText {
 	width: 100%;
 	letter-spacing: 0;
-	float: left;
 	font-size: 1.1em;
 	word-wrap: break-word;
 	img {
@@ -58,7 +57,7 @@
 }
 .messageContainer {
 	display: flex;
-	padding: 10px 20px;
+	padding: 0 20px;
 	margin-top: 5px;
 	.date {
 		font-size: 13px;
@@ -67,12 +66,20 @@
 		font-weight: 700;
 	}
 	.messageBox {
-		background: $white;
 		border-radius: 20px;
-		padding: 5px 20px;
-		color: $dark;
+		// padding: 5px 20px;
 		display: inline-block;
 		max-width: 40%;
+		word-wrap: break-word;
+	}
+	.admin {
+		margin: auto;
+		width: 100%;
+		text-align: center;
+		p {
+			font-size: $smallFont;
+			color: $gray;
+		}
 	}
 }
 .messages {

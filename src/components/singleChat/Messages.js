@@ -27,8 +27,12 @@ const Messages = ({chats}) => {
 					<div className='messageContainer'>
 						<div className={messageClass(sender)}>
 							<p className='messageText'>{ReactEmoji.emojify(message)}</p>
-							<p className='date'>{dayjs(createdAt).format('MMM DD, YYYY HH:mm')}</p>
-							<p className='sentText'>{sender}</p>
+							{sender === 'admin' ? null : (
+								<>
+									<p className='date'>{dayjs(createdAt).format('MMM DD, YYYY HH:mm')}</p>
+									<p className='sentText'>{sender}</p>
+								</>
+							)}
 						</div>
 					</div>
 				</div>
