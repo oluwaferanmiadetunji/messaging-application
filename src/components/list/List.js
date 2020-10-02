@@ -28,18 +28,6 @@ const List = ({id, location}) => {
 
 	return (
 		<Col xs={12} sm={12} md={5} lg={3} id={id} className='chat-list'>
-			{/* <Nav variant='tabs' fill>
-				<Nav.Item className={location === 'chat' ? 'activeTab' : null}>
-					<Navbar.Brand>
-						<NavLink to='/chats'>Chats</NavLink>
-					</Navbar.Brand>
-				</Nav.Item>
-				<Nav.Item className={location === 'chat' ? 'activeTab' : null}>
-					<Navbar.Brand>
-						<NavLink to='/users'>All Users</NavLink>
-					</Navbar.Brand>
-				</Nav.Item>
-			</Nav> */}
 			<h4>Chats</h4>
 			<div>
 				{allUsers
