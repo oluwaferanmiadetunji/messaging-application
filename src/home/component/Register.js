@@ -63,7 +63,7 @@ const Register = ({setView}) => {
 				setUserData(data.userData);
 				localStorage.setItem('username', data.userData.username);
 				localStorage.setItem('isLogged', true);
-				history.push('/chats');
+				history.push('/users');
 			}
 		}
 	};

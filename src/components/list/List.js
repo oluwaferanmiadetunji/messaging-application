@@ -13,8 +13,9 @@ import Socket from '../../utils/sockets';
 import CreateChatRoom from '../../utils/createChat';
 import Dot from '../../utils/Dot';
 
-const List = ({id, location}) => {
-	const {SetRecipient, allUsers, setCurrentRoom, setNewChats} = useDataContext();
+const List = ({id}) => {
+	const {SetRecipient, setCurrentRoom, setNewChats} = useDataContext();
+	const allUsers = JSON.parse(localStorage.users);
 	const {userData} = useAuthContext();
 	dayjs.extend(relativeTime);
 
@@ -23,23 +24,13 @@ const List = ({id, location}) => {
 		setCurrentRoom(room);
 		Socket.emit('getChats', room, ({chats}) => {
 			setNewChats(chats);
+			localStorage.removeItem('chats');
+			localStorage.setItem('chats', JSON.stringify(chats));
 		});
 	};
 
 	return (
 		<Col xs={12} sm={12} md={5} lg={3} id={id} className='chat-list'>
-			{/* <Nav variant='tabs' fill>
-				<Nav.Item className={location === 'chat' ? 'activeTab' : null}>
-					<Navbar.Brand>
-						<NavLink to='/chats'>Chats</NavLink>
-					</Navbar.Brand>
-				</Nav.Item>
-				<Nav.Item className={location === 'chat' ? 'activeTab' : null}>
-					<Navbar.Brand>
-						<NavLink to='/users'>All Users</NavLink>
-					</Navbar.Brand>
-				</Nav.Item>
-			</Nav> */}
 			<h4>Chats</h4>
 			<div>
 				{allUsers

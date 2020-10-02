@@ -15,7 +15,8 @@ const Chats = () => {
 	useEffect(() => {
 		Socket.on('allUsers', (data) => {
 			setAllUsers(data);
-			localStorage.setItem('users', JSON.stringify(data));
+			localStorage.removeItem('allUsers');
+			localStorage.setItem('allUsers', JSON.stringify(data));
 		});
 	}, [setAllUsers]);
 

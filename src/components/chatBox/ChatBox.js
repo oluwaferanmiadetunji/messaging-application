@@ -13,7 +13,8 @@ import NoData from '../noData/NoData';
 
 const ChatBox = ({id}) => {
 	const [message, setMessage] = useState('');
-	const {chats, recipient, currentRoom, setChats} = useDataContext();
+	const {recipient, currentRoom, setChats} = useDataContext();
+	const chats = JSON.parse(localStorage.chats);
 
 	const [allChats, setAllChats] = useState([]);
 	const username = localStorage.username;
