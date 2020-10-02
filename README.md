@@ -1,6 +1,24 @@
 [![Build Status](https://travis-ci.com/oluwaferanmiadetunji/messaging-application-backend.svg?branch=master)](https://travis-ci.com/oluwaferanmiadetunji/messaging-application-backend)
 
 <br />
+<p align="center">
+  <a href="https://voteright-e8208.firebaseapp.com">
+    <img src="logo.PNG" alt="Logo" >
+  </a>
+
+  <h3 align="center">Messanger</h3>
+
+  <p align="center">
+    A real time messaging app
+    <br />
+    <br />
+    <a href="https://mensaje.netlify.app/">View Demo</a>
+    ·
+    <a href=" https://github.com/oluwaferanmiadetunji/messaging-application-frontend.git/issues">Report Bug</a>
+    ·
+    <a href=" https://github.com/oluwaferanmiadetunji/messaging-application-frontend.git/issues">Request Feature</a>
+  </p>
+</p>
 
 # messaging-application-frontend
 
@@ -14,6 +32,7 @@
     -   [Built With](#built-with)
 -   [Getting Started](#getting-started)
     -   [Installation](#installation)
+    -   [Starting](#starting)
     -   [Starting](#starting)
 -   [Contributing](#contributing)
 -   [License](#license)
@@ -59,6 +78,10 @@ npm run start
 ```
 
 You will then be able to access it at localhost:3000
+
+### Wireframe
+
+https://www.figma.com/file/OGwK27pUee818dc83ZEu9c/Messanger-Wireframe?node-id=4%3A0
 
 <!-- CONTRIBUTING -->
 
