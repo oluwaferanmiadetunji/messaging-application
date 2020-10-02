@@ -49,7 +49,7 @@ const Register = ({setView}) => {
 			Toast('error', "Passwords don't match!");
 		} else {
 			setLoading(true);
-			const {status, data, message} = await makePostReq('user/register', {
+			const {status, data, } = await makePostReq('user/register', {
 				name,
 				username: username.split(' ')[0].toLowerCase(),
 				email,

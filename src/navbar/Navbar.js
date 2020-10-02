@@ -10,8 +10,9 @@ const NavigationBar = () => {
 	const {userData} = useAuthContext();
 
 	const logout = () => {
-		localStorage.removeItem('')
-	}
+		localStorage.removeItem('tokens');
+		localStorage.setItem('isLogged', false);
+	};
 
 	return (
 		<Navbar collapseOnSelect expand='lg' bg='dark' fixed='top' variant='dark'>
@@ -28,7 +29,7 @@ const NavigationBar = () => {
 						<NavDropdown.Item href='#action/3.1'>View Profile</NavDropdown.Item>
 						<NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
 						<NavDropdown.Divider />
-						<NavDropdown.Item href='#action/3.4'>Logout</NavDropdown.Item>
+						<NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
 					</NavDropdown>
 					<Nav.Link>
 						<img src={userData.imageUrl} alt='profile' className='profileImage' />

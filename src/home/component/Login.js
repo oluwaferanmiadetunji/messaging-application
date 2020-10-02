@@ -8,7 +8,7 @@ import {faEye} from '@fortawesome/free-solid-svg-icons';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import {makePostReq} from '../../utils/api';
-import Toast from '../../utils/Toast';
+// import Toast from '../../utils/Toast';
 import {useAuthContext} from '../../contexts/AuthContext';
 
 const eye = <FontAwesomeIcon icon={faEye} />;
@@ -32,7 +32,7 @@ const Login = ({setView}) => {
 		event.preventDefault();
 
 		setLoading(true);
-		const {status, message, data} = await makePostReq('user/login', {email, password});
+		const {status,  data} = await makePostReq('user/login', {email, password});
 		// Toast(status, message);
 		setLoading(false);
 		if (status === 'ok') {
