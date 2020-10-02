@@ -9,15 +9,21 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import image from './component/bg.svg';
 
-
 const HomePage = () => {
 	const [view, setView] = useState('home');
-	
+
 	return (
 		<Container>
 			<Row>
 				<Col className='components' sm='12' md='6' lg='6'>
-					<h4 className='app-header'>Mensaje</h4>
+					<h4
+						className='app-header'
+						onClick={() => {
+							setView('home');
+						}}
+					>
+						Mensaje
+					</h4>
 					{view === 'home' && <Home setView={setView} />}
 					{view === 'login' && <Login setView={setView} />}
 					{view === 'register' && <Register setView={setView} />}

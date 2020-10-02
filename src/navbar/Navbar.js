@@ -5,13 +5,17 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Navbar from 'react-bootstrap/Navbar';
 import './style.css';
 import {useAuthContext} from '../contexts/AuthContext';
+import Socket from '../utils/sockets';
 
 const NavigationBar = () => {
 	const {userData} = useAuthContext();
+	const username = localStorage.username;
 
 	const logout = () => {
 		localStorage.removeItem('tokens');
 		localStorage.setItem('isLogged', false);
+		window.location.href = '/';
+		Socket.emit('offline', {username});
 	};
 
 	return (

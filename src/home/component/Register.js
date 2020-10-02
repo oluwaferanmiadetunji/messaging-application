@@ -49,21 +49,21 @@ const Register = ({setView}) => {
 			Toast('error', "Passwords don't match!");
 		} else {
 			setLoading(true);
-			const {status, data, } = await makePostReq('user/register', {
+			const {status, data,message } = await makePostReq('user/register', {
 				name,
 				username: username.split(' ')[0].toLowerCase(),
 				email,
 				password: password1,
 			});
 			setLoading(false);
-			// Toast(status, message);
+			Toast(status, message);
 			if (status === 'ok') {
 				const token = `Bearer ${data.token}`;
 				setAuthTokens(token);
 				setUserData(data.userData);
 				localStorage.setItem('username', data.userData.username);
 				localStorage.setItem('isLogged', true);
-				history.push('/users');
+				history.push('/chats');
 			}
 		}
 	};

@@ -8,6 +8,7 @@
 	color: white;
 	text-align: center;
 	margin: 20px;
+	cursor: pointer;
 }
 .card {
 	background-color: transparent;
@@ -66,4 +67,3 @@ form i {
 		margin-top: 5%;
 	}
 }
-

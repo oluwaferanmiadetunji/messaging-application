@@ -2,6 +2,10 @@
 	padding-top: 70px;
 	height: 100vh;
 	max-width: 100vw;
+	margin-top: 0;
+}
+.chat-container.container {
+	margin-top: 0;
 }
 .chat-container .row {
 	height: 100%;
@@ -29,5 +33,11 @@
 	}
 	#ch-chatBox {
 		display: none;
+	}
+}
+
+@media (min-width: 992px) {
+	.chat-container.container {
+		margin-top: 0;
 	}
 }
