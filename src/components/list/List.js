@@ -13,7 +13,7 @@ import Socket from '../../utils/sockets';
 import CreateChatRoom from '../../utils/createChat';
 import Dot from '../../utils/Dot';
 
-const List = ({id, location}) => {
+const List = () => {
 	const {SetRecipient, allUsers, setCurrentRoom, setNewChats} = useDataContext();
 	const {userData} = useAuthContext();
 	dayjs.extend(relativeTime);
@@ -27,7 +27,7 @@ const List = ({id, location}) => {
 	};
 
 	return (
-		<Col xs={12} sm={12} md={5} lg={3} id={id} className='chat-list'>
+		<Col xs={12} sm={12} md={5} lg={3}  className='chat-list'>
 			<h4>Chats</h4>
 			<div>
 				{allUsers
