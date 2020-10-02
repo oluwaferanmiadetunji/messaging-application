@@ -8,6 +8,11 @@ import {useAuthContext} from '../contexts/AuthContext';
 
 const NavigationBar = () => {
 	const {userData} = useAuthContext();
+
+	const logout = () => {
+		localStorage.removeItem('')
+	}
+
 	return (
 		<Navbar collapseOnSelect expand='lg' bg='dark' fixed='top' variant='dark'>
 			<Navbar.Brand>

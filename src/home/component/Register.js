@@ -56,14 +56,14 @@ const Register = ({setView}) => {
 				password: password1,
 			});
 			setLoading(false);
-			Toast(status, message);
+			// Toast(status, message);
 			if (status === 'ok') {
 				const token = `Bearer ${data.token}`;
 				setAuthTokens(token);
 				setUserData(data.userData);
 				localStorage.setItem('username', data.userData.username);
 				localStorage.setItem('isLogged', true);
-				history.push('/chats');
+				history.push('/users');
 			}
 		}
 	};

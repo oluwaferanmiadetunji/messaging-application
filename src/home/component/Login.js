@@ -33,7 +33,7 @@ const Login = ({setView}) => {
 
 		setLoading(true);
 		const {status, message, data} = await makePostReq('user/login', {email, password});
-		Toast(status, message);
+		// Toast(status, message);
 		setLoading(false);
 		if (status === 'ok') {
 			const token = `Bearer ${data.token}`;
@@ -41,7 +41,7 @@ const Login = ({setView}) => {
 			setUserData(data.userData);
 			localStorage.setItem('username', data.userData.username);
 			localStorage.setItem('isLogged', true);
-			history.push('/chats');
+			history.push('/users');
 		}
 	};
 
