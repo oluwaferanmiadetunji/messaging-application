@@ -30,9 +30,6 @@ const NavigationBar = () => {
 				<Nav className='mr-auto' />
 				<Nav>
 					<NavDropdown title={`${userData.name}`} id='collasible-nav-dropdown'>
-						{/* <NavDropdown.Item href='#action/3.1'>View Profile</NavDropdown.Item>
-						<NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item> */}
-						<NavDropdown.Divider />
 						<NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
 					</NavDropdown>
 					<Nav.Link>
