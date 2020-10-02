@@ -1,0 +1,27 @@
+.chat-profile {
+	text-align: center;
+}
+h4 {
+	color: white;
+	margin: 20px;
+}
+.user {
+	display: block;
+}
+img {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+.user-details {
+	margin: 20px;
+}
+label {
+	color: white;
+}
+.form-control-plaintext {
+	color: white;
+}
+input {
+	margin-left: 10px;
+}

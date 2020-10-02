@@ -1,0 +1,33 @@
+.chat-container {
+	padding-top: 70px;
+	height: 100vh;
+	max-width: 100vw;
+}
+.chat-container .row {
+	height: 100%;
+}
+@media (max-width: 1199px) {
+	#ch-chatBox {
+		display: none;
+	}
+	#ch-list {
+		flex: 0 0 40%;
+		max-width: 40%;
+	}
+	#ch-profile {
+		flex: 0 0 60%;
+		max-width: 60%;
+		border-right: none;
+	}
+}
+
+@media (max-width: 575.98px) {
+	#ch-profile {
+		flex: 0 0 100%;
+		max-width: 100%;
+		border-right: none;
+	}
+	#ch-list {
+		display: none;
+	}
+}

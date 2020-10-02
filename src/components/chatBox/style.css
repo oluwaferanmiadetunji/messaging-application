@@ -1,0 +1,52 @@
+.chat-details {
+	border-right: 2px solid #a2a7ab;
+	height: 100%;
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: block;
+}
+.messages {
+	padding: 10px 0;
+	overflow: auto;
+	flex: auto;
+	height: 90%;
+}
+
+.chats.admin.card {
+	background-color: transparent;
+	border: none;
+	text-align: center;
+	color: white;
+}
+.chats.recipient.card {
+	border: none;
+	color: #212529;
+	background-color: white;
+	width: 45%;
+	margin: 20px 0;
+	border-radius: 10px;
+}
+.chats.recipient.card .text-muted {
+	text-align: right;
+	margin-right: 10px;
+	font-size: 13px;
+}
+.chats.sender.card {
+	background-color: #4a4a4a;
+	color: white;
+	width: 45%;
+	float: right;
+	margin: 20px 0;
+	border-radius: 10px;
+}
+.chats.sender.card .text {
+	text-align: right;
+	margin-right: 10px;
+	color: white;
+	font-size: 13px;
+}
+.chats.sender.card .card-body,
+.chats.recipient.card .card-body {
+	padding: 10px;
+}
