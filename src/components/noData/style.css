@@ -1,0 +1,16 @@
+@media (min-width: 1200px) {
+	.con {
+		text-align: center;
+		margin-left: 30%;
+		margin-top: 10%;
+	}
+}
+.con {
+	text-align: center;
+	margin-left: 20%;
+	margin-top: 10%;
+}
+.con .background-image {
+	height: 300px;
+	width: 300px;
+}

@@ -9,6 +9,7 @@ import './style.css';
 import {useDataContext} from '../../contexts/DataContext';
 import dayjs from 'dayjs';
 import Socket from '../../utils/sockets';
+import NoData from '../noData/NoData';
 
 const ChatBox = ({id}) => {
 	const [message, setMessage] = useState('');
@@ -38,7 +39,7 @@ const ChatBox = ({id}) => {
 		});
 	}, [chats, setChats]);
 
-	return (
+	return allChats.length > 0 ? (
 		<Col xs={12} sm={12} md={7} lg={6} id={id} className='chat-details'>
 			<ScrollToBottom className='messages'>
 				{allChats.map(({createdAt, message, sender}, index) => (
@@ -86,6 +87,8 @@ const ChatBox = ({id}) => {
 				</InputGroup>
 			</div>
 		</Col>
+	) : (
+		<NoData />
 	);
 };
 

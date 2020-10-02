@@ -1,0 +1,14 @@
+h2 {
+	color: white;
+}
+.loader-container {
+	width: 100vw;
+	height: 100vh;
+  text-align: center;
+  padding-top: 20%;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}

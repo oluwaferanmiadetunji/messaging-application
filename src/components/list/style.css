@@ -6,12 +6,16 @@
 	overflow-x: hidden;
 	display: block;
 }
-
+h4{
+	text-align: center;
+}
 .user-image {
 	width: 50px;
 	margin-right: 20px;
 }
-
+#title{
+	font-size: 16px;
+}
 .user-image img {
 	width: 50px;
 	height: 50px;
@@ -45,6 +49,8 @@ a:hover {
 	background-color: white;
 	color: #212529;
 }
-@media (max-width: 575.98px) {
-	
+
+.nav.nav-tabs.nav-fill .nav-item{
+	background-color: white;
+	margin-top: 10px;
 }

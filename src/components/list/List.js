@@ -2,8 +2,8 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
 import './style.css';
 import {useDataContext} from '../../contexts/DataContext';
 import {useAuthContext} from '../../contexts/AuthContext';
@@ -28,18 +28,19 @@ const List = ({id, location}) => {
 
 	return (
 		<Col xs={12} sm={12} md={5} lg={3} id={id} className='chat-list'>
-			<Nav variant='tabs' fill>
-				<Nav.Item>
-					<Navbar.Brand className={location === 'chat' ? 'activeTab' : null}>
+			{/* <Nav variant='tabs' fill>
+				<Nav.Item className={location === 'chat' ? 'activeTab' : null}>
+					<Navbar.Brand>
 						<NavLink to='/chats'>Chats</NavLink>
 					</Navbar.Brand>
 				</Nav.Item>
-				<Nav.Item>
-					<Navbar.Brand className={location === 'chat' ? 'activeTab' : null}>
+				<Nav.Item className={location === 'chat' ? 'activeTab' : null}>
+					<Navbar.Brand>
 						<NavLink to='/users'>All Users</NavLink>
 					</Navbar.Brand>
 				</Nav.Item>
-			</Nav>
+			</Nav> */}
+			<h4>Chats</h4>
 			<div>
 				{allUsers
 					? allUsers.map(({imageUrl, name, online, lastLogin, email, username}, index) => (
@@ -57,10 +58,10 @@ const List = ({id, location}) => {
 										<img alt='user' src={imageUrl} />
 									</div>
 									<div className='detail'>
-										<Card.Title>
+										<Card.Title id='title'>
 											{name} <Dot currentClass={online ? 'online' : 'offline'} />
 										</Card.Title>
-										<Card.Subtitle className='mb-2 text-muted'>
+										<Card.Subtitle className='text-muted'>
 											{online ? 'Online' : `Last seen  ${dayjs(lastLogin).fromNow()}`}
 										</Card.Subtitle>
 									</div>
